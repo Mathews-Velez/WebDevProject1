@@ -1,9 +1,9 @@
 body{
-    margin: 10%;
+    margin: 30px 10%;
     width:80%;
     border: 0.2rem solid;
     border-radius: 2px;
-    box-shadow: 5px 10px;
+    box-shadow: 5px 5px;
 }
 header{
     text-align: center;
