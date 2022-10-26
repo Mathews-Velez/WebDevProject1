@@ -1,18 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
-    <script defer src="js/script.js"></script>
-    <title>Project Manager</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css">
+  <script defer src="js/script.js"></script>
+  <title>Project Manager</title>
 </head>
 <body>
-    <header>420-320 Project 1 - Academic Project Managment</header>
-    <div id="inputContainerWrapper">
+  <header>
+    <h1>420-320 Project 1 - Academic Project Managment</h1>
+  </header>
+  <section id="bodyWrapper">
+    <section id="addProject">
+      <fieldset>
+        <legend>Fill an all required fields</legend>
+        <form>
+          <section>
+            <div id="project">
+              <p>Project<br>id</p>
+              <input>
+            </div>
+            <div id="owner">
+              <p>Owner<br>Name</p>
+              <input>
+            </div>
+          </section>
+          <section>
+            <div id="title">
+              <p>Title</p>
+              <input>
+            </div>
+            <div id="category">
+              <p>Category</p>
+              <select name="status">
+                <option value="category">Category</option>
+              </select>
+            </div>
+          </section>
+          <section>
+            <div id="hours">
+              <p>Hours</p>
+              <input>
+            </div>
+            <div id="rate">
+              <p>Rate</p>
+              <input>
+            </div>
+            <div id="status">
+              <p>Status</p>
+              <select name="status">
+                <option value="planned">Planned</option>
+                <option value="completed">Completed</option>
+                <option value="ongoing">Ongoing</option>
+              </select>
+            </div>
+          </section>
+          <section>
+            <div id="description">
+              <p>Short<br>description</p>
+              <textarea>quantum</textarea>
+            </div>
+          </section>
+        </form>
+      </fieldset>
 
-        <!-- should contatin two bottoms at the bottom here <add> <reset> -->
-    </div>
+      <section id="addResetButton">
+        <button id="addButton">Add</button>
+        <button id="resetButton">Reset</button>
+      </section>
+    </section>
+
+    <section id="localStorageButton">
+      <button id="write">Write (save) local</button>
+      <button id="append">Append local</button>
+      <button id="clear">Clear local</button>
+      <button id="load">Load (read) local</button>
+    </section>
+
+    <section id="table">
+      <input id="query" value="">
+
+      <table>
+        <tr id="tableHead">
+          <th id="tableProject">Project id</td>
+          <th id="tableOwner">Owner</td>
+          <th id="tableTitle">Title</td>
+          <th id="tableCategory">Category</td>
+          <th id="tableStatus">Status</td>
+          <th id="tableHours">Hours</td>
+          <th id="tableRate">Rate</td>
+          <th id="tableDescription">Description</td>
+          <th id="tableEdit">Edit</td>
+          <th id="tableDelete">Delete</td>
+        </tr>
+        <tr class="rowSaved">
+          <td class="tableProject">1</td>
+          <td class="tableOwner">Owner</td>~
+          <td class="tableTitle">Title</td>
+          <td class="tableCategory">Category</td>
+          <td class="tableStatus">Status</td>
+          <td class="tableHours">Hours</td>
+          <td class="tableRate">Rate</td>
+          <td class="tableDescription">Description</td>
+          <td class="tableEdit"><img></td>
+          <td class="tableDelete"><img></td>
+        </tr>
+        <tr class="rowEdit">
+          <td class="tableProject"><input value="2"></td>
+          <td class="tableOwner"><input value="Owner"></td>
+          <td class="tableTitle"><input value="Title"></td>
+          <td class="tableCategory"><input value="Category"></td>
+          <td class="tableStatus"><input value="Status"></td>
+          <td class="tableHours"><input value="Hours"></td>
+          <td class="tableRate"><input value="Rate"></td>
+          <td class="tableDescription"><input value="Description"></td>
+          <td class="tableEdit"><img></td>
+          <td class="tableDelete"><img></td>
+        </tr>
+      </table>
+    </section>
+  </section>
+  <footer>
+    <p>
+      Oni Picotte, 2036356, 3, copyright Fall 2022
+    </p>
+    <p>
+      , , 3, copyright Fall 2022
+    </p>
+  </footer>
 </body>
 </html>
