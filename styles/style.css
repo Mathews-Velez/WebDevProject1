@@ -5,7 +5,7 @@
 }
 header{
   color: aliceblue;
-  background-color: blueviolet;
+  background-color: #581143;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@ header{
 }
 footer{
   color: white;
-  background-color: blueviolet;
+  background-color:#581143;
   display: grid;
   justify-content: center;
   padding-bottom:30px;
@@ -26,12 +26,18 @@ td, th {
 }
 button{
   color: aliceblue;
-  background-color: blue;
+  background-color: rgb(45, 45, 121);
 }
 fieldset{
   margin: 20px;
+  background-color: rgb(250, 223, 182);
+}
+legend{
+  background-color: rgb(250, 223, 182);
+  width: 100%;
 }
 form{
+  background-color: rgb(250, 223, 182);
   display:inline-flex;
   width: 100%;
   justify-content:space-evenly;
@@ -45,6 +51,9 @@ form > section{
 input{
   display: table-cell;
 }
+#addProject{
+  background-color: rgb(250, 223, 182);
+}
 #addResetButton{
   width: 100%;
   margin-bottom: 100px;
@@ -56,6 +65,7 @@ input{
   padding: 10px;
 }
 #localStorageButton{
+  background-color: #0f959e;
   width: 100%;
   display: inline-flex;
   justify-content: space-evenly;
@@ -64,6 +74,7 @@ input{
   padding: 10px;
 }
 #table{
+  background-color: #0f959e;
   display:grid;
   width:100%;
   padding: 20px;
@@ -75,7 +86,7 @@ input{
  justify-self:center;
 }
 table{
-  
+  background-color: whitesmoke;
   width:100%;
 }
 #tableHead{
