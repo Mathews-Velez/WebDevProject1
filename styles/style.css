@@ -4,13 +4,21 @@
   box-sizing: border-box;
 }
 header{
+  color: aliceblue;
+  background-color: blueviolet;
   width: 100%;
   display: flex;
-  justify-self: center;
+  justify-content: center;
+  padding-bottom: 30px;
 }
 footer{
-
+  color: white;
+  background-color: blueviolet;
+  display: grid;
+  justify-content: center;
+  padding-bottom:30px;
 }
+
 td, th {
   border: 1px solid black;
   margin: 10px;
@@ -19,9 +27,6 @@ td, th {
 button{
   color: aliceblue;
   background-color: blue;
-}
-input {
-  width: ;
 }
 fieldset{
   margin: 20px;
@@ -61,7 +66,7 @@ input{
 #table{
   display:grid;
   width:100%;
-  padding: 10px;
+  padding: 20px;
 }
 #query{
  height: 30px;
@@ -70,7 +75,7 @@ input{
  justify-self:center;
 }
 table{
-  display: ;
+  
   width:100%;
 }
 #tableHead{
