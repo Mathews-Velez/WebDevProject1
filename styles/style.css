@@ -3,12 +3,20 @@
   padding: 0px;
   box-sizing: border-box;
 }
+header{
+  width: 100%;
+  display: flex;
+  justify-self: center;
+}
 td, th {
   border: 1px solid black;
   margin: 10px;
   padding: 10px;
 }
-
+button{
+  color: aliceblue;
+  background-color: blue;
+}
 input {
   max-width: 75px;
 }
@@ -55,4 +63,10 @@ input{
 }
 table{
   width:100%;
+}
+#tableHead{
+  background-color: green;
+}
+tbody tr:nth-child(odd){
+  background-color: darkgrey;
 }
