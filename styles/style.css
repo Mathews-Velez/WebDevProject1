@@ -30,19 +30,15 @@ button{
 }
 fieldset{
   margin: 20px;
-  background-color: rgb(250, 223, 182);
-}
-legend{
-  background-color: rgb(250, 223, 182);
-  width: 100%;
+  padding: 10px;
 }
 form{
-  background-color: rgb(250, 223, 182);
+
   display:inline-flex;
   width: 100%;
   justify-content:space-evenly;
 }
-form > section{
+form section{
   border-style:solid ;
   border-width: 1px;
   display: inline-table;
@@ -50,8 +46,10 @@ form > section{
 }
 input{
   display: table-cell;
+  max-width: 50px;
 }
 #addProject{
+  padding: 20px;
   background-color: rgb(250, 223, 182);
 }
 #addResetButton{
@@ -60,17 +58,18 @@ input{
   display: inline-flex;
   justify-content: space-evenly;
 }
-#addResetButton>button{
+#addResetButton button{
   width: 100px;
   padding: 10px;
 }
 #localStorageButton{
   background-color: #0f959e;
   width: 100%;
+  padding: 20px;
   display: inline-flex;
   justify-content: space-evenly;
 }
-#localStorageButton>button{
+#localStorageButton button{
   padding: 10px;
 }
 #table{
@@ -82,7 +81,6 @@ input{
 #query{
  height: 30px;
  width: 500px;
- display: flex;
  justify-self:center;
 }
 table{
