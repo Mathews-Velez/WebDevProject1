@@ -90,7 +90,7 @@ table{
 #tableHead{
   background-color: green;
 }
-tbody tr:nth-child(odd){
+table tr:nth-child(odd){
   background-color: darkgrey;
 }
 

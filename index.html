@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/style.css">
   <script defer src="js/script.js"></script>
+  <script src="js/addRow.js"></script>
   <title>Project Manager</title>
 </head>
 <body>
@@ -16,7 +17,7 @@
     <section id="addProject">
       <fieldset>
         <legend>Fill an all required fields</legend>
-        <form>
+        <form id="form">
           <section>
             <div id="project">
               <p>Project<br>id</p>
@@ -35,6 +36,8 @@
             <div id="category">
               <p>Category</p>
               <select name="status">
+                <option value="category">Category</option>
+                <option value="category">Category</option>
                 <option value="category">Category</option>
               </select>
             </div>
@@ -60,7 +63,7 @@
           <section>
             <div id="description">
               <p>Short<br>description</p>
-              <textarea>quantum</textarea>
+              <textarea>hey</textarea>
             </div>
           </section>
         </form>
