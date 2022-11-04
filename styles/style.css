@@ -3,6 +3,9 @@
   padding: 0px;
   box-sizing: border-box;
 }
+#overview{
+  min-height: 100vh;
+}
 header{
   color: aliceblue;
   background-color: #581143;
@@ -72,15 +75,19 @@ input{
 #localStorageButton button{
   padding: 10px;
 }
+#oniSucksTableOverflow{
+  overflow-y: scroll;
+}
 #table{
   background-color: #0f959e;
   display:grid;
   width:100%;
+  height:280px;
   padding: 20px;
 }
 #query{
  height: 30px;
- width: 500px;
+ max-width: 500px;
  justify-self:center;
 }
 table{
@@ -89,8 +96,10 @@ table{
 }
 #tableHead{
   background-color: green;
+  position: sticky;
+  top: 0;
 }
-tbody tr:nth-child(odd){
+table tr:nth-child(odd){
   background-color: darkgrey;
 }
 
