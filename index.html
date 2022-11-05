@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/style.css">
-  <script defer src="js/script.js"></script>
+  <!-- <link rel="stylesheet" href="styles/style.css"> -->
+  <link rel="stylesheet" href="styles/test.css">
   <script src="js/addRow.js"></script>
   <script src="js/resetForm.js"></script>
   <title>Project Manager</title>
@@ -14,10 +14,10 @@
 
 <body>
   <div id="overview">
-    <header>
-      <h1>420-320 Project 1 - Academic Project Managment</h1>
-    </header>
-    <section id="bodyWrapper">
+    <section id="top">
+      <header>
+        <h1>420-320 Project 1 - Academic Project Managment</h1>
+      </header>
       <section id="addProject">
         <fieldset>
           <legend>Fill an all required fields</legend>
@@ -27,14 +27,14 @@
                 <div class="popup">
                   <span class="popupIndication hide">Alphanimeric Character, Unique from other Project Id</span>
                 </div>
-                <p>Project<br>id</p>
+                <p>Project Id</p>
                 <input name="project" required>
               </div>
               <div id="owner">
                 <div class="popup">
                   <span class="popupIndication hide">Alphabetic Character</span>
                 </div>
-                <p>Owner<br>Name</p>
+                <p>Owner Name</p>
                 <input name="owner" required>
               </div>
             </section>
@@ -90,7 +90,7 @@
                 <div class="popup">
                   <span class="popupIndication hide">Alphanimeric Character</span>
                 </div>
-                <p>Short<br>description</p>
+                <p>Short Description</p>
                 <textarea name="desc"></textarea>
               </div>
             </section>
@@ -101,60 +101,60 @@
           <button id="addButton">Add</button>
           <button id="resetButton">Reset</button>
         </section>
+      </section>
+    </section>
+    <section id="bottom">
+      <section id="localStorageButton">
+        <button id="write">Write (save) local</button>
+        <button id="append">Append local</button>
+        <button id="clear">Clear local</button>
+        <button id="load">Load (read) local</button>
+      </section>
 
+      <section id="table">
+        <input id="query" value="Enter your query">
+        <!-- <p>Query Result</p> -->
+        <div id="oniSucksTableOverflow">
+          <table>
+            <tr id="tableHead">
+              <th id="tableProject">Project id</td>
+              <th id="tableOwner">Owner</td>
+              <th id="tableTitle">Title</td>
+              <th id="tableCategory">Category</td>
+              <th id="tableStatus">Status</td>
+              <th id="tableHours">Hours</td>
+              <th id="tableRate">Rate</td>
+              <th id="tableDescription">Description</td>
+              <th id="tableEdit">Edit</td>
+              <th id="tableDelete">Delete</td>
+            </tr>
+            <tr class="rowSaved">
+              <td class="tableProject">1</td>
+              <td class="tableOwner">Owner</td>
+              <td class="tableTitle">Title</td>
+              <td class="tableCategory">Category</td>
+              <td class="tableStatus">Status</td>
+              <td class="tableHours">Hours</td>
+              <td class="tableRate">Rate</td>
+              <td class="tableDescription">Description</td>
+              <td class="tableEdit"><img src="images/edit.svg"></td>
+              <td class="tableDelete"><img src="images/trash.svg"></td>
+            </tr>
+            <tr class="rowEdit">
+              <td class="tableProject"><input value="2"></td>
+              <td class="tableOwner"><input value="Owner"></td>
+              <td class="tableTitle"><input value="Title"></td>
+              <td class="tableCategory"><input value="Category"></td>
+              <td class="tableStatus"><input value="Status"></td>
+              <td class="tableHours"><input value="Hours"></td>
+              <td class="tableRate"><input value="Rate"></td>
+              <td class="tableDescription"><input value="Description"></td>
+              <td class="tableEdit"><img></td>
+              <td class="tableDelete"><img></td>
+            </tr>
+          </table>
+        </div>
 
-        <section id="localStorageButton">
-          <button id="write">Write (save) local</button>
-          <button id="append">Append local</button>
-          <button id="clear">Clear local</button>
-          <button id="load">Load (read) local</button>
-        </section>
-
-        <section id="table">
-          <input id="query" value="Enter your query">
-          <!-- <p>Query Result</p> -->
-          <div id="oniSucksTableOverflow">
-            <table>
-              <tr id="tableHead">
-                <th id="tableProject">Project id</td>
-                <th id="tableOwner">Owner</td>
-                <th id="tableTitle">Title</td>
-                <th id="tableCategory">Category</td>
-                <th id="tableStatus">Status</td>
-                <th id="tableHours">Hours</td>
-                <th id="tableRate">Rate</td>
-                <th id="tableDescription">Description</td>
-                <th id="tableEdit">Edit</td>
-                <th id="tableDelete">Delete</td>
-              </tr>
-              <tr class="rowSaved">
-                <td class="tableProject">1</td>
-                <td class="tableOwner">Owner</td>
-                <td class="tableTitle">Title</td>
-                <td class="tableCategory">Category</td>
-                <td class="tableStatus">Status</td>
-                <td class="tableHours">Hours</td>
-                <td class="tableRate">Rate</td>
-                <td class="tableDescription">Description</td>
-                <td class="tableEdit"><img></td>
-                <td class="tableDelete"><img></td>
-              </tr>
-              <tr class="rowEdit">
-                <td class="tableProject"><input value="2"></td>
-                <td class="tableOwner"><input value="Owner"></td>
-                <td class="tableTitle"><input value="Title"></td>
-                <td class="tableCategory"><input value="Category"></td>
-                <td class="tableStatus"><input value="Status"></td>
-                <td class="tableHours"><input value="Hours"></td>
-                <td class="tableRate"><input value="Rate"></td>
-                <td class="tableDescription"><input value="Description"></td>
-                <td class="tableEdit"><img></td>
-                <td class="tableDelete"><img></td>
-              </tr>
-            </table>
-          </div>
-
-        </section>
       </section>
       <footer>
         <p>
@@ -164,6 +164,7 @@
           Mathews Velez,1912607, 3, copyright Fall 2022
         </p>
       </footer>
+    </section>
   </div>
 </body>
 

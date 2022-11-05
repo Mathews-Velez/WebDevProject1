@@ -1,25 +1,38 @@
+/* color palette
+ * 03045e
+ * 0077b6
+ * 00b4d8
+ * 90e0ef
+ * caf0f8
+ */
+
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
 }
-#overview{
-  max-height: 100px;
+body {
+  height: 100hv;
+  background-color: #caf0f8;
+}
+#overview {
+  height: 100%;
 }
 header{
-  color: aliceblue;
-  background-color: #581143;
+  color: #caf0f8;
+  background-color: #00b4d8;
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-bottom: 30px;
+  padding: 30px;
 }
 footer{
-  color: white;
-  background-color:#581143;
+  color: #caf0f8;
+  background-color:#00b4d8;
   display: grid;
   justify-content: center;
   padding-bottom:30px;
+  bottom: 0px;
 }
 
 td, th {
@@ -54,7 +67,6 @@ input{
 
 #addProject{
   padding: 20px;
-  background-color: rgb(250, 223, 182);
 }
 #addResetButton{
   width: 100%;
@@ -78,6 +90,7 @@ input{
 }
 #oniSucksTableOverflow{
   overflow-y: scroll;
+  margin: 0px;
 }
 #table{
   background-color: #0f959e;

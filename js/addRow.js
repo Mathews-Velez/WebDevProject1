@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
   const input = document.querySelectorAll('form input')
+  const textarea = document.querySelector('form textarea')
 
   validateForm()
   input.forEach((input) => {
     input.addEventListener('focusout', validateForm)
   })
+  textarea.addEventListener('focusout', validateForm)
 
-  const addButton = document.getElementById('addButton')
-  addButton.addEventListener('click', validateForm)
 
   function addProject() {
     const table = document.querySelector('table')
@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
       td.className = element
       if (i < formAnswer.length) {
         td.innerHTML = formAnswer[i]
+      } else if (i == formAnswer.length) {
+        td.innerHTML = `<img src="images/edit.svg">`
+      } else {
+        td.innerHTML = `<img src="images/trash.svg">`
       }
       row.appendChild(td)
       i++
@@ -70,12 +74,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialise the regex object for the form fields
     const REGEX = {
-      'alphanumeric':/^[A-Za-z0-9]+$/,
-      'alpha':/^[A-Za-z]+$/,
-      'numeric':/^[0-9]+$/,
+      'alphanumeric':/^[A-Za-z0-9]*$/,
+      'alpha':/^[A-Za-z]*$/,
+      'numeric':/^[0-9]*$/,
       'category':/[Pp]ract|[Tt]heory|[Ff]und [Rr]es/,
-      'status':/[Pp]lanned|[Cc]ompleted|[Oo]ngoing/
+      'status':/[Pp]lanned|[Cc]ompleted|[Oo]ngoing/,
+      'empty':/^$/
     }
+
+    const alphanumericElements = [project,title,description]
+    const alphaElements = [owner]
+    const numericElements = [hours,rate]
+    const empty = [project,title,description,owner,hours,rate,category,status]
+
+    let alphanumericBoolean = false
+    let alphaBoolean = false
+    let numericBoolean = false
+    let emptyBoolean = false
 
     if (!REGEX.alphanumeric.test(project.value)) {
       pProject.style.border = '1px red dashed'
@@ -134,10 +149,24 @@ document.addEventListener('DOMContentLoaded', function () {
       errorPopupHide(description.parentElement)
     }
 
-    if (REGEX.alphanumeric.test(project.value) && REGEX.alpha.test(owner.value) && REGEX.alphanumeric.test(title.value) && REGEX.category.test(category.value) && REGEX.numeric.test(hours.value) && REGEX.numeric.test(rate.value) && REGEX.status.test(status.value) && REGEX.alphanumeric.test(description.value)) {
+    if (alphanumericElements.every(element => REGEX.alphanumeric.test(element.value))) {
+      alphanumericBoolean = true
+    }
+    if (alphaElements.every(element => REGEX.alpha.test(element.value))) {
+      alphaBoolean = true
+    }
+    if (numericElements.every(element => REGEX.numeric.test(element.value))) {
+      numericBoolean = true
+    }
+    if (empty.some(element => REGEX.empty.test(element.value))) {
+      emptyBoolean = true
+    }
+
+    if (alphanumericBoolean && alphaBoolean && numericBoolean && !emptyBoolean) {
       addButton.style.backgroundColor = ''
-      addProject()
+      addButton.addEventListener('click', addProject)
     } else {
+      addButton.removeEventListener('click', addProject)
       addButton.style.backgroundColor = 'gray'
     }
   }
