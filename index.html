@@ -21,26 +21,37 @@
       <section id="addProject">
         <fieldset>
           <legend>Fill an all required fields</legend>
-          <form>
+          <form name="newProject">
             <section>
               <div id="project">
+                <div class="popup">
+                  <span class="popupIndication hide">Alphanimeric Character, Unique from other Project Id</span>
+                </div>
                 <p>Project<br>id</p>
-                <input>
+                <input name="project" required>
               </div>
               <div id="owner">
+                <div class="popup">
+                  <span class="popupIndication hide">Alphabetic Character</span>
+                </div>
                 <p>Owner<br>Name</p>
-                <input>
+                <input name="owner" required>
               </div>
             </section>
             <section>
               <div id="title">
+                <div class="popup">
+                  <span class="popupIndication hide">Alphanimeric Character</span>
+                </div>
                 <p>Title</p>
-                <input>
+                <input name="title" required>
               </div>
               <div id="category">
+                <div class="popup">
+                  <span class="popupIndication hide">Pract, Theory, Fund Res</span>
+                </div>
                 <p>Category</p>
-                <select name="status">
-                  <option value=""></option>
+                <select name="category" required>
                   <option value="pract">Pract</option>
                   <option value="theory">Theory</option>
                   <option value="fundRes">Fund Res</option>
@@ -49,17 +60,25 @@
             </section>
             <section>
               <div id="hours">
+                <div class="popup">
+                  <span class="popupIndication hide">Numeric Character</span>
+                </div>
                 <p>Hours</p>
-                <input>
+                <input name="hours" required>
               </div>
               <div id="rate">
+                <div class="popup">
+                  <span class="popupIndication hide">Numeric Character</span>
+                </div>
                 <p>Rate</p>
-                <input>
+                <input name="rate" required>
               </div>
               <div id="status">
+                <div class="popup">
+                  <span class="popupIndication hide">Planned, Completed, Ongoing</span>
+                </div>
                 <p>Status</p>
-                <select name="status">
-                  <option value=""></option>
+                <select name="status" required>
                   <option value="planned">Planned</option>
                   <option value="completed">Completed</option>
                   <option value="ongoing">Ongoing</option>
@@ -68,8 +87,11 @@
             </section>
             <section>
               <div id="description">
+                <div class="popup">
+                  <span class="popupIndication hide">Alphanimeric Character</span>
+                </div>
                 <p>Short<br>description</p>
-                <textarea></textarea>
+                <textarea name="desc"></textarea>
               </div>
             </section>
           </form>
