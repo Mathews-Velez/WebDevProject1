@@ -1,15 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // Get the element for the eventlistener
   const input = document.querySelectorAll('form input')
   const textarea = document.querySelector('form textarea')
 
+  // Call the validate function once to inisialise the style
   validateForm()
+  // Add the eventlistener to the form to validate
   input.forEach((input) => {
     input.addEventListener('focusout', validateForm)
   })
   textarea.addEventListener('focusout', validateForm)
 
-
+  // Add a row to the table
   function addProject() {
+    // Inisialize the variable needed for the function
     const table = document.querySelector('table')
     const row = document.createElement('tr')
     row.className = 'rowSaved'
@@ -17,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const formAnswer = getFormInfo()
     let i = 0
 
+    // Create all the td that go in the tr with the field from the form
     tdClass.forEach(element => {
       const td = document.createElement('td')
       td.className = element
@@ -31,9 +36,11 @@ document.addEventListener('DOMContentLoaded', function () {
       i++
     })
 
+    // Add the row
     table.appendChild(row)
   }
   
+  // Get the value from the form and return it
   function getFormInfo() {
     const formAnswer = ["","","","","","","",""]
     formAnswer[0] = document.getElementById('project').querySelector('input').value
@@ -48,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return formAnswer
   }
 
+  // Does all the form validation
   function validateForm() {
     // Get the add Button
     const addButton = document.getElementById('addButton')
@@ -82,16 +90,19 @@ document.addEventListener('DOMContentLoaded', function () {
       'empty':/^$/
     }
 
+    // Separate the field by type of validation
     const alphanumericElements = [project,title,description]
     const alphaElements = [owner]
     const numericElements = [hours,rate]
     const empty = [project,title,description,owner,hours,rate,category,status]
 
+    // Inisialize field for each type of validation
     let alphanumericBoolean = false
     let alphaBoolean = false
     let numericBoolean = false
     let emptyBoolean = false
 
+    // Take care of the popup that shows when something is wrong
     if (!REGEX.alphanumeric.test(project.value)) {
       pProject.style.border = '1px red dashed'
       errorPopupShow(project.parentElement)
@@ -149,6 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
       errorPopupHide(description.parentElement)
     }
 
+    // Validate every field in the form
     if (alphanumericElements.every(element => REGEX.alphanumeric.test(element.value))) {
       alphanumericBoolean = true
     }
@@ -162,19 +174,23 @@ document.addEventListener('DOMContentLoaded', function () {
       emptyBoolean = true
     }
 
+    // If every field in the form are correct then let the add button be pressed and call the addProject function
     if (alphanumericBoolean && alphaBoolean && numericBoolean && !emptyBoolean) {
       addButton.style.backgroundColor = ''
       addButton.addEventListener('click', addProject)
+      // Else remove the eventlistener on the add button and make it gray
     } else {
       addButton.removeEventListener('click', addProject)
       addButton.style.backgroundColor = 'gray'
     }
   }
 
+  // Show the popup
   function errorPopupShow(element) {
     element.querySelector('.popupIndication').classList.replace('hide','show')
   }
 
+  // Hide the popup
   function errorPopupHide(element) {
     element.querySelector('.popupIndication').classList.replace('show','hide')
   }
