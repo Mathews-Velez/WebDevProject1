@@ -1,14 +1,29 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Get all image
-  const deleteImg = document.querySelectorAll('.delete')
-  const editImg = document.querySelectorAll('.edit')
-  const saveImg = document.querySelectorAll('.save')
+  const button = document.getElementById('addButton')
 
-  // Add eventlistener to all image
-  deleteImg.forEach((element) => element.addEventListener('click',deleteRow))
-  editImg.forEach((element) => element.addEventListener('click',editRow))
-  saveImg.forEach((element) => element.addEventListener('click',saveRow))
+  button.addEventListener('mouseup',addEventListener)
+
+  function addEventListener() {
+    // Get all image
+    const deleteImg = document.querySelectorAll('.delete')
+    const editImg = document.querySelectorAll('.edit')
+    const saveImg = document.querySelectorAll('.save')
+
+    // Add eventlistener to all image
+    deleteImg.forEach((element) => {
+      element.removeEventListener('click',deleteRow)
+      element.addEventListener('click',deleteRow)
+    })
+    editImg.forEach((element) => {
+      element.removeEventListener('click',editRow)
+      element.addEventListener('click',editRow)
+    })
+    saveImg.forEach((element) => {
+      element.removeEventListener('click',saveRow)
+      element.addEventListener('click',saveRow)
+    })
+  }
 
   // Delete row of the target
   function deleteRow(event) {

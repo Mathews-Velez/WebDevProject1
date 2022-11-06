@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', function () {
       if (i < formAnswer.length) {
         td.innerHTML = formAnswer[i]
       } else if (i == formAnswer.length) {
-        td.innerHTML = `<img src="images/edit.svg">`
+        td.innerHTML = `<img class="edit" src="images/edit.svg">`
       } else {
-        td.innerHTML = `<img src="images/trash.svg">`
+        td.innerHTML = `<img class="delete" src="images/trash.svg">`
       }
       row.appendChild(td)
       i++
@@ -177,10 +177,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // If every field in the form are correct then let the add button be pressed and call the addProject function
     if (alphanumericBoolean && alphaBoolean && numericBoolean && !emptyBoolean) {
       addButton.style.backgroundColor = ''
-      addButton.addEventListener('click', addProject)
+      addButton.addEventListener('mousedown', addProject)
       // Else remove the eventlistener on the add button and make it gray
     } else {
-      addButton.removeEventListener('click', addProject)
+      addButton.removeEventListener('mousedown', addProject)
       addButton.style.backgroundColor = 'gray'
     }
   }
