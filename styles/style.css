@@ -200,3 +200,7 @@ table tr:nth-child(odd){
 table tr:nth-child(even){
   background-color: #90e0ef;
 }
+table img {
+  display: block;
+  margin: auto;
+}
