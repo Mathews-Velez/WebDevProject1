@@ -33,10 +33,43 @@ document.addEventListener(
 
     function populateTable() {
       const table = document.querySelector("table");
-      const tdClass = Object.keys(projects[0]);
-      console.log(tdClass);
+      // for each object in projects
+      // console.log(projects[0].tableDescription)
       for (let i = 0; i < projects.length; i++) {
-        
+        //make a new tr elementType
+        const row = document.createElement('tr')
+        //for each tdClass
+        for (let j = 0; j < Object.values(projects[i]).length;j++){      
+           // make a new td with the tdClass as the td class and the value to be the value pair of the key "tdClass"
+           const column = document.createElement('td')
+           column.className = Object.keys(projects[i])[j]
+           column.innerHTML = Object.values(projects[i])[j]
+           if column.className 
+           console.log("adding column "+ Object.keys(projects[i])[j])
+           row.appendChild(column)
+           console.log(row)
+        }
+      console.log("added a new row")
+      table.appendChild(row)
+      }
+    }
+    populateTable()
+      
+      //       make a new td with the tdClass as the td class and the value to be the value pair of the key "tdClass"
+       //       add the td to the row
+      //     }
+      //  }
+
+      // const tdClass = Object.keys(projects[0]);
+      // console.log(tdClass);
+      // for (let i = 0; i < projects.length; i++) {
+      //  tdClass.forEach( elementType => {
+      //   const td = document.createElement('td')
+      //   td.className = elementType
+
+
+      //  })
+       
         // tdClass.forEach(element => {
         //   const td = document.createElement('td')
         //   td.className = element
@@ -47,8 +80,6 @@ document.addEventListener(
         //   i++
         // })
         // table.appendChild(row)
-      }
-    }
     function addProject() {
       const table = document.querySelector("table");
       const row = document.createElement("tr");
