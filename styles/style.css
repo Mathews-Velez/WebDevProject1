@@ -167,6 +167,7 @@ form textarea {
 #table th, #table td {
   border: 1px black solid;
   border-radius: 2px;
+  min-width: 80px;
 }
 table input {
   width: fit-content;
@@ -198,4 +199,8 @@ table tr:nth-child(odd){
 }
 table tr:nth-child(even){
   background-color: #90e0ef;
+}
+table img {
+  display: block;
+  margin: auto;
 }
