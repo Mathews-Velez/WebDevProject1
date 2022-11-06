@@ -2,7 +2,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // Get the element for the eventlistener
   const input = document.querySelectorAll('form input')
   const textarea = document.querySelector('form textarea')
-
+  // Initailize the empty projects json array that will be used to populate the table
+    //each project object will habe a property called state that will be used by populateTable to know
+    const projects = [
+      
+    ];
   // Call the validate function once to inisialise the style
   validateForm()
   // Add the eventlistener to the form to validate
@@ -11,49 +15,72 @@ document.addEventListener('DOMContentLoaded', function () {
   })
   textarea.addEventListener('focusout', validateForm)
 
+  //populates the table with the projects array
+  function populateTable() {
+      const table = document.querySelector("table");
+      // for each object in projectss
+      for (let i = 0; i < projects.length; i++) {
+        //make a new tr elementType
+        const row = document.createElement("tr");
+        //for each tdClass
+        for (let j = 0; j < Object.values(projects[i]).length; j++) {
+          // make a new td with the tdClass as the td class and the value to be the value pair of the key "tdClass"
+          const column = document.createElement("td");
+          column.className = Object.keys(projects[i])[j];
+          if (column.className.includes(""))
+          column.innerHTML = Object.values(projects[i])[j];
+          //add the td to the row
+          row.appendChild(column);
+          console.log(row);
+        }
+        console.log("added a new row");
+        table.appendChild(row);
+      }
+    }
+
   // Add a row to the table
   function addProject() {
-    // Inisialize the variable needed for the function
-    const table = document.querySelector('table')
-    const row = document.createElement('tr')
-    row.className = 'rowSaved'
-    const tdClass = ['tableProject','tableOwner','tableTitle','tableCatagory','tableStatus','tableHours','tableRate','tableDescription','tableEdit','tableDelete']
-    const formAnswer = getFormInfo()
-    let i = 0
-
-    // Create all the td that go in the tr with the field from the form
-    tdClass.forEach(element => {
-      const td = document.createElement('td')
-      td.className = element
-      if (i < formAnswer.length) {
-        td.innerHTML = formAnswer[i]
-      } else if (i == formAnswer.length) {
-        td.innerHTML = `<img class="edit" src="images/edit.svg">`
-      } else {
-        td.innerHTML = `<img class="delete" src="images/trash.svg">`
-      }
-      row.appendChild(td)
-      i++
-    })
-
-    // Add the row
-    table.appendChild(row)
+    //get the json object from the form 
+    const formAnswer = getFormInfo();
+    //add it to the table
+    projects.push(formAnswer)
+    console.log("added a new project");
+    //rerender the table with the new values
+    populateTable();
   }
   
   // Get the value from the form and return it
   function getFormInfo() {
-    const formAnswer = ["","","","","","","",""]
-    formAnswer[0] = document.getElementById('project').querySelector('input').value
-    formAnswer[1] = document.getElementById('owner').querySelector('input').value
-    formAnswer[2] = document.getElementById('title').querySelector('input').value
-    formAnswer[3] = document.getElementById('category').querySelector('select').value
-    formAnswer[4] = document.getElementById('hours').querySelector('input').value
-    formAnswer[5] = document.getElementById('rate').querySelector('input').value
-    formAnswer[6] = document.getElementById('status').querySelector('select').value
-    formAnswer[7] = document.getElementById('description').querySelector('textarea').value
-
-    return formAnswer
-  }
+      const project = {};
+      project.project = document
+        .getElementById("project")
+        .querySelector("input").value;
+      project.owner = document
+        .getElementById("owner")
+        .querySelector("input").value;
+      project.title = document
+        .getElementById("title")
+        .querySelector("input").value;
+      project.category = document
+        .getElementById("category")
+        .querySelector("select").value;
+      project.hours = document
+        .getElementById("hours")
+        .querySelector("input").value;
+      project.rate = document
+        .getElementById("rate")
+        .querySelector("input").value;
+      project.status = document
+        .getElementById("status")
+        .querySelector("select").value;
+      project.description = document
+        .getElementById("description")
+        .querySelector("textarea").value;
+      ;
+      project.tableEdit = `<img class="edit" src="images/edit.svg">`
+      project.tableDelete = `<img class="delete" src="images/trash.svg">`
+      return project;
+    }
 
   // Does all the form validation
   function validateForm() {
@@ -152,14 +179,13 @@ document.addEventListener('DOMContentLoaded', function () {
       pStatus.style.border = ''
       errorPopupHide(status.parentElement)
     }
-    if (!REGEX.alphanumeric.test(description.value)) {
+    if (description.value == null) {
       pDescription.style.border = '1px red dashed'
       errorPopupShow(description.parentElement)
     } else {
       pDescription.style.border = ''
       errorPopupHide(description.parentElement)
     }
-
     // Validate every field in the form
     if (alphanumericElements.every(element => REGEX.alphanumeric.test(element.value))) {
       alphanumericBoolean = true
@@ -173,7 +199,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (empty.some(element => REGEX.empty.test(element.value))) {
       emptyBoolean = true
     }
-
     // If every field in the form are correct then let the add button be pressed and call the addProject function
     if (alphanumericBoolean && alphaBoolean && numericBoolean && !emptyBoolean) {
       addButton.style.backgroundColor = ''
