@@ -4,82 +4,38 @@ document.addEventListener(
     // Initailize the empty projects json array that will be used to populate the table
     //each project object will habe a property called state that will be used by populateTable to know
     const projects = [
-      {
-        tableProject: "1",
-        tableOwner: "owner",
-        tableTitle: "title",
-        tableCategory: "category",
-        tableStatus: "completed",
-        tableHours: "6",
-        tableRate: "7",
-        tableDescription: "This is the description for the project",
-      },
-      {
-        tableProject: "3",
-        tableOwner: "john",
-        tableTitle: "Fight a tiger",
-        tableCategory: "fund res",
-        tableStatus: "ongoing",
-        tableHours: "1",
-        tableRate: "10",
-        tableDescription: "Prove who the alpha male is",
-      },
+      
     ];
 
     document
       .getElementById("addButton")
       .addEventListener("click", populateTable);
 
-
     function populateTable() {
       const table = document.querySelector("table");
-      // for each object in projects
-      // console.log(projects[0].tableDescription)
+      // for each object in projectss
       for (let i = 0; i < projects.length; i++) {
         //make a new tr elementType
-        const row = document.createElement('tr')
+        const row = document.createElement("tr");
         //for each tdClass
-        for (let j = 0; j < Object.values(projects[i]).length;j++){      
-           // make a new td with the tdClass as the td class and the value to be the value pair of the key "tdClass"
-           const column = document.createElement('td')
-           column.className = Object.keys(projects[i])[j]
-           column.innerHTML = Object.values(projects[i])[j]
-           if column.className 
-           console.log("adding column "+ Object.keys(projects[i])[j])
-           row.appendChild(column)
-           console.log(row)
+        for (let j = 0; j < Object.values(projects[i]).length; j++) {
+          // make a new td with the tdClass as the td class and the value to be the value pair of the key "tdClass"
+          const column = document.createElement("td");
+          column.className = Object.keys(projects[i])[j];
+          if (column.className.includes(""))
+          column.innerHTML = Object.values(projects[i])[j];
+
+          console.log("adding column " + Object.keys(projects[i])[j]);
+          //add the td to the row
+          row.appendChild(column);
+          console.log(row);
         }
-      console.log("added a new row")
-      table.appendChild(row)
+        console.log("added a new row");
+        table.appendChild(row);
       }
     }
-    populateTable()
-      
-      //       make a new td with the tdClass as the td class and the value to be the value pair of the key "tdClass"
-       //       add the td to the row
-      //     }
-      //  }
+    populateTable();
 
-      // const tdClass = Object.keys(projects[0]);
-      // console.log(tdClass);
-      // for (let i = 0; i < projects.length; i++) {
-      //  tdClass.forEach( elementType => {
-      //   const td = document.createElement('td')
-      //   td.className = elementType
-
-
-      //  })
-       
-        // tdClass.forEach(element => {
-        //   const td = document.createElement('td')
-        //   td.className = element
-        //   if (i < formAnswer.length) {
-        //     td.innerHTML = formAnswer[i]
-        //   }
-        //   row.appendChild(td)
-        //   i++
-        // })
-        // table.appendChild(row)
     function addProject() {
       const table = document.querySelector("table");
       const row = document.createElement("tr");
@@ -97,7 +53,7 @@ document.addEventListener(
         "tableDelete",
       ];
       const formAnswer = getFormInfo();
-      let i = 0;
+      
     }
 
     function getFormInfo() {
@@ -126,9 +82,9 @@ document.addEventListener(
       project.description = document
         .getElementById("description")
         .querySelector("textarea").innerHTML;
-      console.log(
-        document.getElementById("description").querySelector("textarea").value
-      );
+      ;
+      project.tableEdit = `<img class="edit" src="images/edit.svg">`
+      project.tableDelete = `<img class="delete" src="images/delete.svg">`
       return project;
     }
   },
