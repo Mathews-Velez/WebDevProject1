@@ -1,14 +1,88 @@
 document.addEventListener(
   "DOMContentLoaded",
   function () {
+    // Initailize the empty projects json array that will be used to populate the table
+    const projects = [];
+    let isLocalLoaded = false;
+
+    //check if projects in present in local storage otherwise add one to it
+    if (window.localStorage.getItem("projects") == null) {
+      console.log(
+        "No projects in local storage, adding one to local storage...."
+      );
+      window.localStorage.setItem("projects", []);
+    }
+
     // Get the element for the eventlistener
     const input = document.querySelectorAll("form input");
     const textarea = document.querySelector("form textarea");
-    // Initailize the empty projects json array that will be used to populate the table
-    //each project object will habe a property called state that will be used by populateTable to know
-    const projects = [];
-    // Call the validate function once to inisialise the style
+
+    // methods that interact with local storage
+    //write to local storage(overwrite)
+    function overWriteToLocalStorage() {
+      console.log("Overwriting local storage of projects");
+      window.localStorage.setItem("projects", JSON.stringify(projects));
+      // console.log(localStorage.getItem("projects"));
+    }
+
+    //load local storage
+    function loadLocalStorage() {
+      //get the project array
+      if (window.localStorage.getItem("projects") == "") {
+        console.log("Local storage is currently empty");
+      } else {
+        console.log("Loading local storage project array into table");
+        let lprojects = JSON.parse(window.localStorage.getItem("projects"));
+        for (let i = 0; i < lprojects.length; i++) {
+          projects.push(lprojects[i]);
+          // console.log(lprojects[i])
+        }
+        //refresh the table after loading the local storage data into the projects array
+        populateTable();
+        isLocalLoaded = true;
+      }
+    }
+
+    //append to local storage
+    function addToLocalStorage() {
+      //check if local storage was called
+      if (isLocalLoaded) {
+        console.log("Local storage was loaded");
+        //if it was, clear the local storage
+        console.log("Clearing local storage");
+        clearLocalStorage();
+        //then add the updated array to local storage
+        console.log("Updating local storage");
+        overWriteToLocalStorage();
+      } else{
+        //if local storage was not added to the projects array, we add it. but dont populate the table
+        let lprojects = JSON.parse(window.localStorage.getItem("projects"));
+        for (let i = 0; i < lprojects.length; i++) {
+          projects.push(lprojects[i]);
+        }
+        //now that we have projects array updated with the local storage array of projects we can clear and then add the new array to local storage
+        console.log("local projects array has been updated with local storage");
+        clearLocalStorage();
+        overWriteToLocalStorage();
+        
+      }
+      //get the local array of project
+      let lprojects = JSON.parse(window.localStorage.getItem("projects")); //append the session array to the local storage array
+      //iterate through every obj in projects array, if the object exists in the local version
+      // lprojects.push(projects[i]);
+      console.log(lprojects);
+      window.localStorage.setItem("projects", JSON.stringify(lprojects));
+    }
+
+    //empty local storage
+    function clearLocalStorage() {
+      console.log("Clearing local storage...");
+      window.localStorage.setItem("projects", []);
+    }
+
+    // Call the validate function once to initialize the style
     validateForm();
+    populateTable();
     // Add the eventlistener to the form to validate
     input.forEach((input) => {
       input.addEventListener("focusout", validateForm);
@@ -36,10 +110,10 @@ document.addEventListener(
          <th id="tableDelete">Delete</td>
        </tr>
      </table>`;
-     
+
       const table = document.querySelector("table");
       for (let i = 0; i < projects.length; i++) {
-        console.log("Reading object at index: " + i);
+        // console.log("Reading object at index: " + i);
         //make a new tr elementType
         const row = document.createElement("tr");
         //for each tdClass
@@ -51,7 +125,7 @@ document.addEventListener(
           //add the td to the row
           row.appendChild(column);
         }
-        console.log("added a new row");
+        // console.log("added a new row");
         table.appendChild(row);
       }
     }
@@ -62,11 +136,13 @@ document.addEventListener(
       const formAnswer = getFormInfo();
       //add it to the table
       projects.push(formAnswer);
-      console.log("added a new project");
+      // console.log("added a new project");
       //rerender the table with the new values
       populateTable();
+      console.log(projects);
     }
 
+    function removeProject(e) {}
     // Get the value from the form and return it
     function getFormInfo() {
       const project = {};
@@ -266,6 +342,21 @@ document.addEventListener(
         .querySelector(".popupIndication")
         .classList.replace("show", "hide");
     }
+
+    // deleteImg.forEach((element) => {
+    //   element.removeEventListener('click',removeRow)
+    //   element.addEventListener('click',removeRow)
+    // })
+    document
+      .getElementById("write")
+      .addEventListener("click", overWriteToLocalStorage);
+    document
+      .getElementById("append")
+      .addEventListener("click", addToLocalStorage);
+    document
+      .getElementById("clear")
+      .addEventListener("click", clearLocalStorage);
+    document.getElementById("load").addEventListener("click", loadLocalStorage);
   },
   false
 );
