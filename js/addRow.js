@@ -63,8 +63,7 @@ document.addEventListener(
         //now that we have projects array updated with the local storage array of projects we can clear and then add the new array to local storage
         console.log("local projects array has been updated with local storage");
         clearLocalStorage();
-        overWriteToLocalStorage();
-        
+        overWriteToLocalStorage(); 
       }
       //get the local array of project
       let lprojects = JSON.parse(window.localStorage.getItem("projects")); //append the session array to the local storage array
@@ -142,7 +141,11 @@ document.addEventListener(
       console.log(projects);
     }
 
-    function removeProject(e) {}
+    function removeProject(e) {
+      //get the json object as an arguemnt from the function call 
+      //find its index in the projects array
+      //remove it 
+    }
     // Get the value from the form and return it
     function getFormInfo() {
       const project = {};
