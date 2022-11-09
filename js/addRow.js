@@ -208,8 +208,8 @@ document.addEventListener(
 
       // Initialise the regex object for the form fields
       const REGEX = {
-        alphanumeric: /^[A-Za-z0-9]*$/,
-        alpha: /^[A-Za-z]*$/,
+        alphanumeric: /^[A-Za-z0-9 ]*$/,
+        alpha: /^[A-Za-z ]*$/,
         numeric: /^[0-9]*$/,
         category: /[Pp]ract|[Tt]heory|[Ff]und [Rr]es/,
         status: /[Pp]lanned|[Cc]ompleted|[Oo]ngoing/,
