@@ -360,6 +360,124 @@ document.addEventListener(
       .getElementById("clear")
       .addEventListener("click", clearLocalStorage);
     document.getElementById("load").addEventListener("click", loadLocalStorage);
+
+    // Get row info on save
+    function getRowOnSave(event) {
+      // Variable declaration
+      const row = event.target.parentElement.parentElement
+      const td = row.querySelectorAll('td')
+      const input = row.querySelectorAll('input')
+      let content = []
+      const project = {}
+  
+      // Get the text in each col
+      input.forEach((element) => content.push(element.value))
+  
+      // Change the array to a json object
+      project.project = content[0]
+      project.owner = content[1]
+      project.title = content[2]
+      project.category = content[3]
+      project.hours = content[4]
+      project.rate = content[5]
+      project.status = content[6]
+      project.description = content[7]
+      project.tableEdit = `<img class="edit" src="images/edit.svg">`
+      project.tableDelete = `<img class="delete" src="images/trash.svg">`
+
+      return project
+    }
+
+
+    //#region Edit and Delete stuff
+
+    const button = document.getElementById('addButton')
+
+    button.addEventListener('mouseup',addEventListener)
+  
+    function addEventListener() {
+      // Get all image
+      const deleteImg = document.querySelectorAll('.delete')
+      const editImg = document.querySelectorAll('.edit')
+      const saveImg = document.querySelectorAll('.save')
+  
+      // Add eventlistener to all image
+      deleteImg.forEach((element) => {
+        element.removeEventListener('click',deleteRow)
+        element.addEventListener('click',deleteRow)
+      })
+      editImg.forEach((element) => {
+        element.removeEventListener('click',editRow)
+        element.addEventListener('click',editRow)
+      })
+      saveImg.forEach((element) => {
+        element.removeEventListener('click',saveRow)
+        element.addEventListener('click',saveRow)
+        element.removeEventListener('mousedown',getRowOnSave)
+        element.addEventListener('mousedown',getRowOnSave)
+      })
+    }
+  
+    // Delete row of the target
+    function deleteRow(event) {
+      const row = event.target.parentElement.parentElement
+      row.remove()
+    }
+  
+    // Edit the target row
+    function editRow(event) {
+      // Variable declaration
+      const row = event.target.parentElement.parentElement
+      const td = row.querySelectorAll('td')
+      const editImg = row.querySelector('.edit')
+      let content = []
+  
+      // Get the text in each col
+      td.forEach((element) => content.push(element.textContent))
+  
+      // Add a input field with the value of the previous text
+      for (let i = 0; i < content.length-2; i++) {
+        td[i].textContent = ''
+        td[i].appendChild(document.createElement('input'))
+        td[i].querySelector('input').value = content[i]
+      }
+  
+      // Change the image for the save image and its class
+      editImg.classList.replace('edit','save')
+      editImg.src = 'images/device-floppy.svg'
+  
+      // Change the event on the target
+      event.target.removeEventListener('click',editRow)
+      event.target.addEventListener('click',saveRow)
+    }
+  
+    // Save the target row
+    function saveRow(event) {
+      // Variable declaration
+      const row = event.target.parentElement.parentElement
+      const td = row.querySelectorAll('td')
+      const input = row.querySelectorAll('input')
+      const saveImg = row.querySelector('.save')
+      let content = []
+  
+      // Get the text in each col
+      input.forEach((element) => content.push(element.value))
+  
+      // Replace input field with the text of the input value
+      for (let i = 0; i < content.length; i++) {
+        td[i].innerHTML = ''
+        td[i].textContent = content[i]
+      }
+      // Change the image for the edit image and its class
+      saveImg.classList.replace('save','edit')
+      saveImg.src = 'images/edit.svg'
+      
+      // Change the event on the target
+      event.target.removeEventListener('click',saveRow)
+      event.target.addEventListener('click',editRow)
+    }
+
+    //#endregion
   },
   false
 );
