@@ -142,7 +142,8 @@ document.addEventListener(
       console.log(projects);
     }
 
-    function removeProject(e) {
+    function removeProject(event) {
+      let e = event.target.parentElement.parentElement
       //get the json object as an arguemnt from the function call
       console.log(
         "Project " + e.cells[0].innerText + " has been selected for removal"
@@ -433,12 +434,8 @@ document.addEventListener(
 
       // Add eventlistener to all image
       deleteImg.forEach((element) => {
-        element.removeEventListener("click", () => {
-          removeProject(element.parentElement.parentElement);
-        });
-        element.addEventListener("click", () => {
-          removeProject(element.parentElement.parentElement);
-        });
+      element.removeEventListener("click",removeProject);
+        element.addEventListener("click",removeProject);
       });
       editImg.forEach((element) => {
         element.removeEventListener("click", editRow);
